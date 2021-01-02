@@ -1,9 +1,10 @@
 import React from 'react';
 import UsuarioService from '../Services/UsuarioService';
+
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { isEmail, isEmpty, isNumeric } from 'validator';
+import { isEmail, isEmpty, isNumeric, isAlphanumeric } from 'validator';
 
   const required = value => {
     if (isEmpty(value)) {
@@ -126,17 +127,17 @@ class RegistrarionComponent extends React.Component{
                                     <div className="form-group">
                                         <label htmlFor="Ruc" style={{marginBottom: ".1rem"}}>RUC:</label>
                                         <Input type="ruc" className="form-control" id="Ruc" value={this.state.ruc} 
-                                        onChange={this.ChangeRucHandler} aria-describedby="rucHelp" validations={[required,vruc,vruc2]}/>
+                                        onChange={this.ChangeRucHandler} validations={[required,vruc,vruc2]}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="Username" style={{marginBottom: ".1rem"}}>Username:</label>
                                         <Input type="username" className="form-control" id="Username" value={this.state.username} 
-                                        onChange={this.ChangeUserNameHandler} aria-describedby="usernameHelp" validations={[required]}/>
+                                        onChange={this.ChangeUserNameHandler} validations={[required]}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="Email" style={{marginBottom: ".1rem"}}>Correo:</label>
                                         <Input type="email" className="form-control" id="Email" value={this.state.email} 
-                                        onChange={this.ChangeEmailHandler} aria-describedby="emailHelp" validations={[required,email]}/>
+                                        onChange={this.ChangeEmailHandler} validations={[required,email]}/>
                                     </div>
                                     <div className="form-group" style={{marginBottom: "2rem"}}>
                                         <label htmlFor="Password" style={{marginBottom: ".1rem"}}>Contraseña:</label>
@@ -146,9 +147,11 @@ class RegistrarionComponent extends React.Component{
                                     
                                     <button className="btn" style={{backgroundColor:"#42b72a",borderColor:"#42b72a", 
                                     color:"white", width: "100%"}} onClick={this.saveUsuario} 
-                                    ref={c => {this.checkBtn = c;}} disabled={this.state.loading}> {this.state.loading && (
-                                        <span className="spinner-border spinner-border-sm"></span>
-                                      )}<b>Registrar</b></button>
+                                    ref={c => {this.checkBtn = c;}} disabled={this.state.loading}> 
+                                    {
+                                      this.state.loading && (<span className="spinner-border spinner-border-sm"></span>)
+                                    }
+                                    <b>Registrar</b></button>
                                     {this.state.message && (
                                     <div className="form-group">
                                         <div className="alert alert-danger" role="alert">

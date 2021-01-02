@@ -54,7 +54,7 @@ class LoginComponent extends React.Component{
           if (this.checkBtn.context._errors.length === 0){
             UsuarioService.login(this.state.email, this.state.password).then(() => {
               window.location.reload(false);
-              //this.props.history.push("/perfil-usuario");
+              this.props.history.push("/perfil-usuario");
               //window.location.reload();
             },
             error => {

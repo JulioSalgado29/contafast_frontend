@@ -21,9 +21,9 @@ class HeaderComponent extends React.Component{
             return(
             <div>
                 <header>
-                    <nav className="navbar navbar navbar-light " style={{backgroundColor:"black", marginBottom:"4rem"}}>
+                    <nav className="navbar navbar navbar-light " style={{backgroundColor:"black", marginBottom:"4rem", justifyContent:'space-evenly'}}>
                         <a href="/" className="btn btn-primary active" role="button" aria-pressed="true" 
-                        style={{background: "none", marginLeft:"45%", padding: "inherit", fontSize:"2rem",
+                        style={{background: "none", padding: "inherit", fontSize:"2rem",
                         lineHeight:"1.5",borderRadius:".3rem"}}><b>Contafast</b></a>
                         {currentUser!=null &&
                             <button type="button" className="btn btn-danger" onClick={this.logOut}>Cerrar Sesion</button>
