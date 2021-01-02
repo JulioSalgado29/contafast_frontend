@@ -1,5 +1,6 @@
 import React from 'react';
 import UsuarioService from '../Services/UsuarioService';
+import {Link}from 'react-router-dom';
 
 class HeaderComponent extends React.Component{
 
@@ -22,9 +23,9 @@ class HeaderComponent extends React.Component{
             <div>
                 <header>
                     <nav className="navbar navbar navbar-light " style={{backgroundColor:"black", marginBottom:"4rem", justifyContent:'space-evenly'}}>
-                        <a href="/" className="btn btn-primary active" role="button" aria-pressed="true" 
+                        <Link to="/" className="btn btn-primary active" role="button" aria-pressed="true" 
                         style={{background: "none", padding: "inherit", fontSize:"2rem",
-                        lineHeight:"1.5",borderRadius:".3rem"}}><b>Contafast</b></a>
+                        lineHeight:"1.5",borderRadius:".3rem"}}><b>Contafast</b></Link>
                         {currentUser!=null &&
                             <button type="button" className="btn btn-danger" onClick={this.logOut}>Cerrar Sesion</button>
                         }

@@ -4,7 +4,7 @@ import UsuarioService from '../Services/UsuarioService';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { isEmail, isEmpty, isNumeric, isAlphanumeric } from 'validator';
+import { isEmail, isEmpty, isNumeric } from 'validator';
 
   const required = value => {
     if (isEmpty(value)) {
@@ -85,6 +85,13 @@ class RegistrarionComponent extends React.Component{
               //window.location.reload();
             },
             error => {
+              if(error.response.status === 401){
+                this.setState({
+                  loading: false,
+                  message: "Personal No autorizado"
+                });
+              }
+              else{
               const resMessage =
               (error.response && error.response.data) || error.message 
               || error.toString();
@@ -92,7 +99,14 @@ class RegistrarionComponent extends React.Component{
                 loading: false,
                 message: resMessage
               });
-            });
+              console.log(resMessage)
+            }})
+            .catch(function(error){
+              this.setState({
+                loading: false,
+                message: "Error de Conexión con el Servidor"
+              });
+            }.bind(this))
           }else {
             this.setState({
               loading: false
@@ -127,7 +141,7 @@ class RegistrarionComponent extends React.Component{
                                     <div className="form-group">
                                         <label htmlFor="Ruc" style={{marginBottom: ".1rem"}}>RUC:</label>
                                         <Input type="ruc" className="form-control" id="Ruc" value={this.state.ruc} 
-                                        onChange={this.ChangeRucHandler} validations={[required,vruc,vruc2]}/>
+                                        onChange={this.ChangeRucHandler} validations={[required ]}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="Username" style={{marginBottom: ".1rem"}}>Username:</label>
@@ -137,12 +151,12 @@ class RegistrarionComponent extends React.Component{
                                     <div className="form-group">
                                         <label htmlFor="Email" style={{marginBottom: ".1rem"}}>Correo:</label>
                                         <Input type="email" className="form-control" id="Email" value={this.state.email} 
-                                        onChange={this.ChangeEmailHandler} validations={[required,email]}/>
+                                        onChange={this.ChangeEmailHandler} validations={[required]}/>
                                     </div>
                                     <div className="form-group" style={{marginBottom: "2rem"}}>
                                         <label htmlFor="Password" style={{marginBottom: ".1rem"}}>Contraseña:</label>
                                         <Input type="password" className="form-control" value={this.state.password} 
-                                        onChange={this.ChangePasswordHandler} id="Password" validations={[required,password]}/>
+                                        onChange={this.ChangePasswordHandler} id="Password" validations={[required]}/>
                                     </div>
                                     
                                     <button className="btn" style={{backgroundColor:"#42b72a",borderColor:"#42b72a", 

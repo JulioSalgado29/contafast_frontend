@@ -8,7 +8,7 @@ import { isEmail, isEmpty } from 'validator';
   const required = value => {
     if (isEmpty(value)) {
       return (
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           Este campo es requerido
         </div>
       );
@@ -79,7 +79,8 @@ class LoginComponent extends React.Component{
           loading: true
         });
       const { currentUser } = this.state;
-      UsuarioService.verificacion(this.state.token,currentUser.email,currentUser.password).then(() => {
+      UsuarioService.verificacion(this.state.token,currentUser.email,currentUser.password)
+      .then(() => {
           window.location.reload(false);
         },
         error => {
@@ -130,7 +131,7 @@ class LoginComponent extends React.Component{
                                   <div className="form-group">
                                       <label htmlFor="Email" style={{marginBottom: ".1rem"}}>Correo:</label>
                                       <Input type="email" className="form-control" id="Email" value={this.state.email} 
-                                      onChange={this.ChangeEmailHandler} aria-describedby="emailHelp" validations={[required,email]}/>
+                                      onChange={this.ChangeEmailHandler} aria-describedby="emailHelp" validations={[required  ]}/>
                                   </div>
                                   <div className="form-group" style={{marginBottom: "2rem"}}>
                                       <label htmlFor="Password" style={{marginBottom: ".1rem"}}>Contraseña:</label>

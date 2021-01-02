@@ -11,10 +11,10 @@ function App(){
         <div>
             <Router>
                 <div>
-                <Switch> https://contafast.herokuapp.com
-                    <Route exact path ="/" component = {HeaderComponent}></Route>
-                    <Route path ="/registrar-usuario" component = {HeaderComponent}></Route>
-                </Switch>
+                    <Switch> https://contafast.herokuapp.com
+                        <Route exact path ="/" component = {HeaderComponent}></Route>
+                        <Route path ="/registrar-usuario" component = {HeaderComponent}></Route>
+                    </Switch>
                 </div>
                 <div>
                     <Switch> https://contafast.herokuapp.com

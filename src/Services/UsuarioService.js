@@ -6,14 +6,15 @@ class UserService {
 
     register(ruc, username, email, password) {
         const usuario = {
-            "username": username,
-            "password": password,
-            "fechaCre": "2020-07-10",
+            "usuario": {"username": username,"password": password,"fechaCre": "2020-07-10"},
             "persona": { "nombre": "Gregory", "apellido": "Recalde", "email": email, "fechaNac": "1999-02-07", "direccion": "Heredia586", "telefono": "920691763", "genero": "M" },
             "token": { "expiration": "2020-07-10" }
         };
 
-        return axios.post(registration + "/registrar-usuario", usuario);
+        return axios.post(registration + "/registrar-administrador", usuario, { auth: {
+            username: 'admin',
+            password: '1234abcd'
+          }});
         //return axios.post(registration + "/crearusuario", { ruc, username, email, password });
     }
     login(email, password) {
