@@ -26,8 +26,8 @@ class HeaderComponent extends React.Component{
                         <Link to="/" className="btn btn-primary active" role="button" aria-pressed="true" 
                         style={{background: "none", padding: "inherit", fontSize:"2rem",
                         lineHeight:"1.5",borderRadius:".3rem"}}><b>Contafast</b></Link>
-                        {currentUser!=null &&
-                            <button type="button" className="btn btn-danger" onClick={this.logOut}>Cerrar Sesion</button>
+                        {
+                        currentUser!=null && <button type="button" className="btn btn-danger" onClick={this.logOut}>Cerrar Sesion</button>
                         }
                     </nav>
                 </header>
