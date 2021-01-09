@@ -7,7 +7,7 @@ import CheckButton from "react-validation/build/button";
 import { isEmail, isEmpty, isNumeric } from 'validator';
 
   const required = value => {
-    if (isEmpty(value)) {
+    if (value.length===0) {
       return (
         <div className="alert alert-danger" role="alert">
           Este campo es requerido

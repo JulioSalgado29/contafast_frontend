@@ -1,6 +1,6 @@
 import axios from 'axios'
-const login = "https://backend-contafast.herokuapp.com/login";
-const registration = "http://localhost:8000/registration";
+const login = "http://dentino.sytes.net:8000/login";
+const registration = "http://dentino.sytes.net:8000/registration";
 
 class UserService {
 
